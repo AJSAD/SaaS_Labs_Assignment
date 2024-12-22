@@ -1,5 +1,7 @@
+import DashBoard from "./Dashboard/Dashboard";
+
 const App = () => {
-  return <h1>Hello, SaaS Labs</h1>;
+  return <DashBoard/>;
 };
 
 export default App;
