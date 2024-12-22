@@ -1,12 +1,14 @@
 import { Table, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { get } from "lodash";
 import Pagination from "./Pagination";
 import * as CONSTANTS from "../Utils/constants";
+import "./tableContainer.css";
 
 function TableContainer() {
     const [data, setData] = useState([]);
     const [pageDetails, setPageDetails] = useState({currentPage: 1, totalPage: 1});
+    const [isBlurPending, startTransition] = useTransition();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -42,13 +44,15 @@ function TableContainer() {
     }
 
     const handlePageBlur = (event) => {
-        let newPage = get(event, CONSTANTS.VALUE);
-        newPage = Math.max(1, Math.min(get(pageDetails, CONSTANTS.TOTAL_PAGE), newPage));
-        setPageDetails((prev) => ({ 
-            ...prev, 
-            currentPage: newPage,
-            tempPage: newPage 
-        }));
+        startTransition(() => {
+            let newPage = get(event, CONSTANTS.VALUE);
+            newPage = Math.max(1, Math.min(get(pageDetails, CONSTANTS.TOTAL_PAGE), newPage));
+            setPageDetails((prev) => ({ 
+                ...prev, 
+                currentPage: newPage,
+                tempPage: newPage 
+            }));
+        })
     }
 
     const handleEnterKey = (event) => {
@@ -62,7 +66,7 @@ function TableContainer() {
     const currentPageItems = data.slice(startIndex, startIndex + itemsPerPage);
 
     return (
-        <div>
+        <div className="tableContainer">
             <Table>
                 <TableHead>
                 <TableRow>
@@ -83,11 +87,12 @@ function TableContainer() {
             </Table>
             <Pagination
                 pageDetails={pageDetails}
+                isBlurPending={isBlurPending}
                 onPrevClick={handlePrevClick}
                 onPageBlur={handlePageBlur}
                 onHandleEnter={handleEnterKey}
                 onNextClick={handleNextClick}
-                />
+            />
         </div>
     );
 }

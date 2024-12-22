@@ -1,0 +1,16 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 2px solid lavender;
+    border-radius: 10px;
+}
+
+.pageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
