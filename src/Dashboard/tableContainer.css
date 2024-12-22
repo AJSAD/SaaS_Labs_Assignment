@@ -1,0 +1,46 @@
+.tableContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 25px;
+    
+}
+
+.MuiTableCell-head{
+    color: white !important;
+}
+
+.MuiTableRow-root:last-child{
+    border-radius: 10px;
+}
+
+.MuiTableRow-root:nth-of-type(odd) {
+    background-color: rgba(156, 39, 176, 0.1);
+}
+
+.MuiTableHead-root {
+    background-color: rgba(156, 39, 176, 1.0);
+    color: white;
+}
+
+.MuiTableHead-root th:first-of-type {
+    border-top-left-radius: 8px;
+}
+
+.MuiTableHead-root th:last-of-type {
+    border-top-right-radius: 8px;
+}
+
+.MuiTableBody-root tr:last-of-type td:first-of-type {
+    border-bottom-left-radius: 8px;
+}
+
+.MuiTableBody-root tr:last-of-type td:last-of-type {
+    border-bottom-right-radius: 8px;
+}
+
+.MuiTableBody-root tr:last-of-type td {
+    border-bottom: none;
+}

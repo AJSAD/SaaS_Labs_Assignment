@@ -15,6 +15,7 @@ export const AMOUNT_PLEDGED_KEY = "amt.pledged";
 export const PREVIOUS = "Previous";
 export const PAGE = "Page";
 export const NEXT = "Next";
+export const OF = "of";
 
 // General
 export const VALUE = "target.value";
